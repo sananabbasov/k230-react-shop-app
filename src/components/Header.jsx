@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Basket from './Basket'
 
 function Header() {
     return (
@@ -21,6 +22,9 @@ function Header() {
                         </li>
                         <li className='p-4 cursor-pointer hover:text-gray-950'>
                             Contact
+                        </li>
+                        <li className='p-4 cursor-pointer hover:text-gray-950'>
+                            <Basket />
                         </li>
                     </ul>
                 </div>

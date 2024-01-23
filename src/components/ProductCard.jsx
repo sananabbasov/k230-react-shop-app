@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { addToBasket } from '../redux/features/basket/basketSlice'
 
 function ProductCard() {
 
     const [products, setProducts] = useState([])
-
+    const dispatch = useDispatch()
 
     const getProducts = async () => {
         await fetch("https://fakestoreapi.com/products").then(x => x.json()).then(x => setProducts(x))
@@ -12,6 +14,7 @@ function ProductCard() {
 
     useEffect(() => {
         getProducts()
+        
     }, [])
 
     console.log(products);
@@ -32,6 +35,9 @@ function ProductCard() {
                                         </span>
                                     </div>
                                     <div className="mt-2 text-sm text-slate-600">{data.price} </div>
+                                    <div onClick={()=> dispatch(addToBasket())} className="mt-2 text-sm text-slate-600">
+                                        Add to cart
+                                    </div>
                                 </div>
                             </div>
                         </div>
